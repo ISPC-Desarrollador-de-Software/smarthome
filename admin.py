@@ -6,5 +6,5 @@ class Admin(USUARIO):
         pass
 
     def eliminar_usuarios(self):
-
         pass
+
