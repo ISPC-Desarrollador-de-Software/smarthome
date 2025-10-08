@@ -3,7 +3,7 @@ import mysql.connector
 from dao.db_conn import DBConn
 from dao.usuario_dao import Usuario_dao
 from dominio.usuario import Usuario
-from servicios.Usuario import Usuario_Sv
+from servicio.Usuario import Usuario_Sv
 
 if __name__ == "__main__":
     # OJO: tu DBConn busca el INI relativo a /dao, por eso uso ../config.ini
