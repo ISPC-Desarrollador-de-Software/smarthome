@@ -4,9 +4,9 @@ from dao.usuario_dao import Usuario_dao
 
 class Usuario_Sv():
     
-  def registro(self,dni:str ,nombre : str ,apellido:str ,nombre_usuario:str , contrasenia : str ,rol :str, db):
+  def registro(self,nombre : str ,apellido:str ,email:str, nombre_usuario:str , contrasena : str ,rol :str, db):
     pdao = Usuario_dao(db)
-    nueva_usuario = Usuario(dni,nombre,apellido,nombre_usuario,contrasenia,rol)
+    nueva_usuario = Usuario(nombre,apellido,email,nombre_usuario,contrasena,rol)
        
  
     try:

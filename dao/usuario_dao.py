@@ -20,7 +20,7 @@ class  Usuario_dao(DataAccessDAO):
             
             try: 
                 cursor = conn.cursor()
-                querry = f"select dni, nombre,apellido,nombre_usuario,contrasenia,rol from {self.db_name}.usuario where dni =%s"
+                querry = f"select id, nombre,apellido,email,nombre_usuario,contrasena,rol from {self.db_name}.usuario where id =%s"
                 cursor.execute(querry,(dni,))
                 
                 row = cursor.fetchone()
@@ -34,8 +34,8 @@ class  Usuario_dao(DataAccessDAO):
         with self.db_conn as conn:
             try:
                 cursor = conn.cursor()
-                query = f"insert into {self.db_name}.usuario(dni, nombre,apellido,nombre_usuario,contrasenia,rol) values (%s,%s,%s,%s,%s,%s)"
-                parametros = (usuario.dni,usuario.nombre,usuario.apellido,usuario.nombre_usuario,usuario.contrasenia,usuario.rol)
+                query = f"insert into {self.db_name}.usuario(nombre,apellido,email,nombre_usuario,contrasena,rol) values (%s,%s,%s,%s,%s,%s)"
+                parametros = (usuario.nombre,usuario.apellido,usuario.email,usuario.nombre_usuario,usuario.contrasena,usuario.rol)
                 cursor.execute(query,parametros)
                 conn.commit()
             except mysql.connector.Error as err:
@@ -56,19 +56,19 @@ class  Usuario_dao(DataAccessDAO):
         with self.db_conn as conn : 
             try:
                 cursor = conn.cursor()
-                query = f"delete form {self.db_name}.usuario where dni = %s "
+                query = f"delete form {self.db_name}.usuario where id = %s "
                 cursor.execute(query, usuario.dni)
                 conn.commit()
             except mysql.connector.Error as err:
                 raise err
             
-    def consulta_iniciar_sesion(self,nombre_usuario:str , contrasenia : str , rol :str )->bool :
+    def consulta_iniciar_sesion(self,nombre_usuario:str , contrasena : str , rol :str )->bool :
         
         with self.db_conn as conn :
             try:
                 cursor = conn.cursor()
-                query = f"select nombre_usuario,contrasenia,rol from {self.db_name}.usuario where nombre_usuario = %s and contrasenia = %s and rol = %s"
-                cursor.execute(query,(nombre_usuario,contrasenia,rol))
+                query = f"select nombre_usuario,contrasena,rol from {self.db_name}.usuario where nombre_usuario = %s and contrasena = %s and rol = %s"
+                cursor.execute(query,(nombre_usuario,contrasena,rol))
                 
                 encontrado = cursor.fetchone() is not None
                 cursor.close()

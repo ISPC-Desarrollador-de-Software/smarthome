@@ -1,23 +1,16 @@
 class Usuario:
     
-    def __init__(self ,dni,nombre : str ,apellido :str ,nombre_usuario :str ,contrasenia :str ,rol :str ):
-        self.__dni = dni
+    def __init__(self ,nombre : str ,apellido :str , email :str ,nombre_usuario :str ,contrasena :str ,rol :str ):
+        
         self.__nombre = nombre
         self.__apellido = apellido
+        self.__email = email
         self.__nombre_usuario = nombre_usuario
-        self.__contrasenia = contrasenia
+        self.__contrasena = contrasena
         self.__rol = rol 
        
    
-    @property
-    def dni(self):
-        return self.__dni
-
-    @dni.setter
-    def dni(self,valor):
-        self.__dni = valor
-
-        
+    
     @property
     def nombre(self):
         return self.__nombre
@@ -33,7 +26,15 @@ class Usuario:
     @apellido.setter
     def apellido(self,valor):
         self.__apellido =valor
-        
+    
+    @property
+    def email(self):
+        return self.__email
+    
+    @email.setter
+    def email(self,valor):
+        self.__email = valor
+    
     @property
     def nombre_usuario(self):
         return self.__nombre_usuario
@@ -43,12 +44,12 @@ class Usuario:
         self.__nombre_usuario = valor
         
     @property
-    def contrasenia(self):
-        return self.__contrasenia
+    def contrasena(self):
+        return self.__contrasena
     
-    @contrasenia.setter
-    def contrasenia(self,valor):
-        self.__contrasenia = valor
+    @contrasena.setter
+    def contrasena(self,valor):
+        self.__contrasena = valor
         
 
     @property
@@ -60,4 +61,4 @@ class Usuario:
         self.__rol = valor
         
     def __str__(self):
-        return f" DNI: {self.__dni}, nombre: {self.__nombre}, apellido: {self.__apellido},usuario {self.__nombre_usuario},contrasenia{self.__contrasenia}, rol: {self.__rol}" 
+        return f"  nombre: {self.__nombre}, apellido: {self.__apellido},email: {self.email}, usuario {self.__nombre_usuario},contrasena{self.__contrasena}, rol: {self.__rol}" 

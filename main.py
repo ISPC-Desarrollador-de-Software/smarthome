@@ -36,13 +36,14 @@ if __name__ == "__main__":
                 print("::::::::::::::::") 
 
                 us =Usuario_Sv()
-                dni = input("Ingrese su DNI: ")
+                #dni = input("Ingrese su DNI: ")
                 nombre = input("Ingrese su nombre: ")
                 apellido = input("Ingrese su apellido: ")
+                email = input("Ingrese su email: ")
                 nombre_usuario = input("Ingrese el usuario: ")
-                contrasenia = input("Ingrese la contrasenia: ")
+                contrasena = input("Ingrese la contrasenia: ")
                 rol = input("Ingrese el rol: ")
-                us.registro(dni,nombre,apellido,nombre_usuario,contrasenia,rol,db)
+                us.registro(nombre,apellido,email,nombre_usuario,contrasena,rol,db)
                 
            
 
