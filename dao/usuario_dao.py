@@ -41,13 +41,13 @@ class  Usuario_dao(DataAccessDAO):
             except mysql.connector.Error as err:
                 raise err
             
-    def update(self,usuario : Usuario):
+    def update_rol(self,rol :str , nombre_usuario :str ):
         with self.db_conn as conn :
             try:
                 cursor = conn.cursor()
-                query = f"update {self.db_name}.usuario set rol = %s where nombre = %s"
+                query = f"update {self.db_name}.usuario set rol = %s where  nombre_usuario= %s"
                 
-                cursor.execute(query,usuario.rol)
+                cursor.execute(query,(rol,nombre_usuario))
                 conn.commit()
             except mysql.connector.Error as err:
                 raise err 
@@ -79,4 +79,3 @@ class  Usuario_dao(DataAccessDAO):
                 raise err
             
     
-        

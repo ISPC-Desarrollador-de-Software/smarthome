@@ -42,7 +42,8 @@ if __name__ == "__main__":
                 email = input("Ingrese su email: ")
                 nombre_usuario = input("Ingrese el usuario: ")
                 contrasena = input("Ingrese la contrasenia: ")
-                rol = input("Ingrese el rol: ")
+                print("rol: admnistrador o estandar")
+                rol = input("Ingrese el rol: ").lower().strip()
                 us.registro(nombre,apellido,email,nombre_usuario,contrasena,rol,db)
                 
            
@@ -55,10 +56,58 @@ if __name__ == "__main__":
                 usuario = input("Ingrese su usuario: ")
                 contrasenia = input ("Ingrese su contrasenia: ")
                 rol = input("Ingrese su rol: ")
-                if us.iniciar_sesion(usuario,contrasenia,rol,db) == True and rol :
-                    print("Se Conecto con exito")
-                else :
-                    print("Error Ingrese un usuario valido")
+                if us.iniciar_sesion(usuario,contrasenia,rol,db) == True and rol =="administrador":
+                    while True :
+                        print("\n:::::::::::::::::::::::::::::")
+                        print(":::Bienvenido Administrador::")
+                        print(":::::::::::::::::::::::::::::")
+                        print("\nopcion 1: Cambiar de rol de un usuario")
+                        print("opcion 2: Crear Dispostivo")
+                        print("Opcion 3: Actualizar Dispositivo")
+                        print("Opcion 4: Listar Dispositivos")
+                        print("Opcion 5: Eliminar Dispositivo")
+                        print("Opcion 6: volver al menu anterior")
+                        
+                        opcion = input("Ingrese una opcion: ")
+                        
+                        if not opcion.isdigit():
+                            print("Error : Ingrese valores numerico valido")
+                            continue
+                        else:
+                            opcion_administrador = int(opcion)
+                        match(opcion_administrador):
+                            case 1 : 
+                                usuario = input("Ingrese el usuario a cambiar rol: ")
+                                rol =input("Ingrese el nuevo rol: ")
+                                
+                                us.cambiar_rol(rol,usuario,db)
+                            
+                            case 2:
+                                pass
+                            
+                            case 3 : 
+                                pass
+                            
+                            case 4 :
+                                pass
+                            
+                            case 5 : 
+                                break
+                            
+                            case __:
+                                print("Error : Ingreso una opcion incorrecta")
+                            
+                            
+                
+                elif  us.iniciar_sesion(usuario,contrasenia,rol,db) == True and rol =="estandar" : 
+                    
+                    while True: 
+                        print("\n:::::::::::::::::::::::::::::")
+                        print(":::Bienvenido Administrador::")
+                        print(":::::::::::::::::::::::::::::")
+                    
+                    
+                
                     
             
                 

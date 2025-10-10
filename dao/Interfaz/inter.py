@@ -9,7 +9,7 @@ class DataAccessDAO(ABC):
         pass
     
     @abstractmethod
-    def update(self,object):
+    def update_rol(self,object):
         pass
     
     @abstractmethod

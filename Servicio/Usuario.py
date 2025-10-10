@@ -22,11 +22,22 @@ class Usuario_Sv():
     try: 
       
       return pdao.consulta_iniciar_sesion(usuario, contrasenia, rol)
-      
-     
-    
+   
     except mysql.connector.Error as err:
     
+      return err
+    
+  def cambiar_rol(self,rol,nombre_usuario,db):
+    
+    pdao = Usuario_dao(db)
+    
+    try:
+      
+      pdao.update_rol(rol,nombre_usuario)
+      
+      
+    
+    except mysql.connector.Error as err:
       return err
     
     
