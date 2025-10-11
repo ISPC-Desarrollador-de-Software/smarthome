@@ -55,5 +55,3 @@ class Usuario_entidad:
     @rol.setter
     def rol(self,valor):
         self._rol = valor
-        
-        
