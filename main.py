@@ -59,6 +59,7 @@ if __name__ == "__main__":
                 us =Usuario_Sv()
                 usuario = input("Ingrese su usuario: ")
                 contrasenia = input ("Ingrese su contrasenia: ")
+                usuario_guardado = usuario
                 rol = input("Ingrese su rol: ")
                 if us.iniciar_sesion(usuario,contrasenia,rol,db) == True and rol =="administrador":
                     while True :
@@ -149,11 +150,27 @@ if __name__ == "__main__":
                 elif  us.iniciar_sesion(usuario,contrasenia,rol,db) == True and rol =="estandar" : 
                     
                     while True: 
-                        print("\n:::::::::::::::::::::::::::::")
-                        print(":::Bienvenido Administrador::")
-                        print(":::::::::::::::::::::::::::::")
-                    
-                    
+                        print("\n:::::::::::::::::::")
+                        print(":::Panel usuario:::")
+                        print(":::::::::::::::::::")
+                        
+                        print("Opcion 1 : Consultar datos personales.")
+                        print("Opcion 2 : Consultar Dispostivos.")
+
+                        opcion= input("Ingrese una opcion: ")
+                        
+                        if not opcion.isdigit():
+                            print("Error Ingrese un valor numerico valido")
+                            continue
+                        else : 
+                            opcion_estandar = int(opcion)
+                        
+                        match(opcion_estandar):
+                            
+                            case 1:
+                                
+                                us.consultar_datos(usuario_guardado,db)
+                                
                 
                     
             

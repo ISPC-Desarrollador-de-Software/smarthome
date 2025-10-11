@@ -14,19 +14,19 @@ class  Usuario_dao(DataAccessDAO):
             self.db_conn = db_conn.connect_to_mysql()
             self.db_name=db_conn.get_data_base_name()
     
-    def get(self,dni : str ) -> Usuario:
+    def mostrar_datos(self,nombre : str ) -> Usuario:
     
         with self.db_conn as conn : 
             
             try: 
                 cursor = conn.cursor()
-                querry = f"select id, nombre,apellido,email,nombre_usuario,contrasena,rol from {self.db_name}.usuario where id =%s"
-                cursor.execute(querry,(dni,))
+                querry = f"select  nombre,apellido,email,nombre_usuario,contrasena,rol from {self.db_name}.usuario where nombre_usuario =%s"
+                cursor.execute(querry,(nombre,))
                 
                 row = cursor.fetchone()
-                if row :
-                    return Usuario(row[0],row[1],row[2],row[3],row[4],row[5])
-                return None
+                if not row:
+                    return None
+                return Usuario(*row)
             except mysql.connector.Error as err:
                 raise err
              
