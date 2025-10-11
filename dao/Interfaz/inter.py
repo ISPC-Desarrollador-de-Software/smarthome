@@ -2,7 +2,7 @@ from abc import ABC , abstractmethod
 
 class DataAccessDAO(ABC):
     @abstractmethod
-    def get(self,id : int):
+    def mostrar_datos(self,nombre : str):
         pass
     @abstractmethod
     def create(self,object):

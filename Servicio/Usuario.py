@@ -40,8 +40,19 @@ class Usuario_Sv():
     except mysql.connector.Error as err:
       return err
     
+  def consultar_datos(self,nombre_usuario,db):
     
-       
+    pdao = Usuario_dao(db)
+     
+    try:
+      
+      usuario =  pdao.mostrar_datos(nombre_usuario)
+      
+      print(usuario)
+    except mysql.connector.Error as err:
+      return err
+      
+    
      
         
         
