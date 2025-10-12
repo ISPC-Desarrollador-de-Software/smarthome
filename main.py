@@ -4,15 +4,17 @@ from dao.db_conn import DBConn
 from dao.usuario_dao import Usuario_dao
 from dominio.usuario import Usuario
 from Servicio.Usuario import Usuario_Sv
+from dominio.dispositivo import Dispositivo
 from Servicio.dispositivos import ServicioDispositivos
 
-db = DBConn() 
-svc = ServicioDispositivos(db) #Permite manejar el menu de dispositivos
 
 if __name__ == "__main__":
     # OJO: tu DBConn busca el INI relativo a /dao, por eso uso ../config.ini
     db = DBConn(config_file="../config.ini")
     dao = Usuario_dao(db)
+
+     
+    svc = ServicioDispositivos(db) #Permite manejar el menu de dispositivos
 
 
     while True:

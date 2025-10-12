@@ -1,8 +1,8 @@
 import mysql.connector
 import logging
 
-from db_conn import DBConn
-from Interfaz.interface_dao_dispositivo import DataAccessDAO
+from dao.db_conn import DBConn
+from dao.Interfaz.interface_dao_dispositivo import DataAccessDAO
 
 from dominio.dispositivo import Dispositivo
  

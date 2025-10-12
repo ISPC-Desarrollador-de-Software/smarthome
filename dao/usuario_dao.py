@@ -2,7 +2,7 @@
 import mysql.connector
 from dominio.usuario import Usuario
 from mysql.connector import errorcode
-from dao.interfaz.inter import DataAccessDAO
+from dao.Interfaz.inter import DataAccessDAO
 from dao.db_conn import DBConn
 
 
