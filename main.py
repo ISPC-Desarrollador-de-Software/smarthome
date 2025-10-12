@@ -3,9 +3,9 @@ import mysql.connector
 from dao.db_conn import DBConn
 from dao.usuario_dao import Usuario_dao
 from dominio.usuario import Usuario
-from Servicio.Usuario import Usuario_Sv
+from servicio.Usuario import Usuario_Sv
 from dominio.dispositivo import Dispositivo
-from Servicio.dispositivos import ServicioDispositivos
+from servicio.dispositivos import ServicioDispositivos
 
 
 if __name__ == "__main__":
