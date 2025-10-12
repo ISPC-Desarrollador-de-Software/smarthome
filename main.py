@@ -1,4 +1,4 @@
-# App Matematica/main.py
+
 import mysql.connector
 from dao.db_conn import DBConn
 from dao.usuario_dao import Usuario_dao
@@ -9,7 +9,7 @@ from servicio.dispositivos import ServicioDispositivos
 
 
 if __name__ == "__main__":
-    # OJO: tu DBConn busca el INI relativo a /dao, por eso uso ../config.ini
+   
     db = DBConn(config_file="../config.ini")
     dao = Usuario_dao(db)
 
@@ -125,11 +125,12 @@ if __name__ == "__main__":
                                     id_dispositivo = None
                                     while id_dispositivo is None:
                                         try:
-                                            id_input = input("ID dispositivo a eliminar").strip
+                                            id_input = input("ID dispositivo a eliminar: ").strip()
                                             id_dispositivo = int(id_input)
                                             
                                             if id_dispositivo <= 0:
                                                 print("ID dispositivo debe ser un numero positivo.")
+                                                id_dispositivo = None
                                         except ValueError:
                                             print("ID dispositivo debe ser un numero entero valido.")
                                     

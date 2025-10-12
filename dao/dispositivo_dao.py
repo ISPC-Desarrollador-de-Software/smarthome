@@ -6,7 +6,7 @@ from dao.Interfaz.interface_dao_dispositivo import DataAccessDAO
 
 from dominio.dispositivo import Dispositivo
  
-
+5
 class DispositivoDAO(DataAccessDAO):
     def __init__(self, db: DBConn):
         self.db = db
