@@ -7,7 +7,7 @@ CREATE TABLE usuario (
   email varchar(255) NOT NULL,
   usuario varchar(10) NOT NULL,
   contrasena varchar(50) NOT NULL,
-  rol int 
+  rol varchar(20) NOT NULL 
 );
 
 
@@ -51,16 +51,16 @@ foreign key (id_dispositivo) references dispositivo(id_dispositivo));
 
 
 -- insert
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('David', 'Flores','David_Flores@gmail.com','David11','123456',1);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('laura', 'Diaz','laura_diaz14@gmail.com','laura2','123456',1);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('sofia', 'vergara','sofia_vergara69@gmail.com','sofi99','123456',1);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('Luis', 'Lopez','lopez_luis_40@gmail.com','luisL23','123456',1);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('daniel', 'zapata','zapata_daniel@gmail.com','daniel20','123456',0);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('lucas', 'tapia','lucas_tapia58@gmail.com','lucas10','123456',0);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('matias', 'tolaba','matias_tolaba@gmail.com','matute','123456',0);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('lisandro', 'anzaldo','lisandro_88@gmail.com','lis88','123456',1);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('Miguel', 'Flores','miguel_10@gmail.com','miguelito','123456',1);
-INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('Martin', 'Flores','martin_flores969@gmail.com','tincho132','123456',1);
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('David', 'Flores','David_Flores@gmail.com','David11','123456',"administrador");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('laura', 'Diaz','laura_diaz14@gmail.com','laura2','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('sofia', 'vergara','sofia_vergara69@gmail.com','sofi99','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('Luis', 'Lopez','lopez_luis_40@gmail.com','luisL23','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('daniel', 'zapata','zapata_daniel@gmail.com','daniel20','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('lucas', 'tapia','lucas_tapia58@gmail.com','lucas10','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('matias', 'tolaba','matias_tolaba@gmail.com','matute','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('lisandro', 'anzaldo','lisandro_88@gmail.com','lis88','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('Miguel', 'Flores','miguel_10@gmail.com','miguelito','123456',"estandar");
+INSERT INTO usuario(nombre,apellido,email,usuario,contrasena,rol) VALUES ('Martin', 'Flores','martin_flores969@gmail.com','tincho132','123456',"estandar");
 
 INSERT into domicilio(nombre_domicilio,direccion,id_usuario) VALUES ('Junin','agustin garzon 88', 1);
 -- casa 1

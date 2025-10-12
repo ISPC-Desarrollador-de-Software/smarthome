@@ -4,6 +4,10 @@ from dao.db_conn import DBConn
 from dao.usuario_dao import Usuario_dao
 from dominio.usuario import Usuario
 from servicio.Usuario import Usuario_Sv
+from servicio.dispositivos import ServicioDispositivos
+
+db = DBConn() 
+svc = ServicioDispositivos(db) #Permite manejar el menu de dispositivos
 
 if __name__ == "__main__":
     # OJO: tu DBConn busca el INI relativo a /dao, por eso uso ../config.ini
@@ -84,16 +88,59 @@ if __name__ == "__main__":
                                 us.cambiar_rol(rol,usuario,db)
                             
                             case 2:
-                                pass
+                                
+                                try:
+                                    print("\n:::::::::::::::::::::::")
+                                    print(":::: Crear dispositivo ::::")
+                                    print("\n:::::::::::::::::::::::")
+                                
+                                    nombre = input("Ingrese el nombre del dispositivo: ")
+                                    tipo = input("Ingrese el tipo: ")
+                                    estado = input("Ingrese el estado (encendido/apagado): ")
+                                    id_ubicacion = int(input("Ingrese el ID de la ubicación: "))
+                                
+                                    if id_ubicacion <= 0:
+                                        print("ID ubicacion debe ser positivo")
+                                        continue
+                                
+                                    nuevo_id = svc.alta(nombre, tipo, estado, id_ubicacion)
+                                except ValueError as error:
+                                    print(f"Error al agregar: {error}")
+                                   
+
                             
                             case 3 : 
                                 pass
                             
                             case 4 :
-                                pass
+                                try:
+                                    dispositivos = svc.listar()
+                                except Exception as error:
+                                    print(f"Error al listar: {error}")
                             
-                            case 5 : 
-                                break
+                            case 5: 
+                                try:
+                                    id_dispositivo = None
+                                    while id_dispositivo is None:
+                                        try:
+                                            id_input = input("ID dispositivo a eliminar").strip
+                                            id_dispositivo = int(id_input)
+                                            
+                                            if id_dispositivo <= 0:
+                                                print("ID dispositivo debe ser un numero positivo.")
+                                        except ValueError:
+                                            print("ID dispositivo debe ser un numero entero valido.")
+                                    
+                                    eliminacion_exitosa = svc.eliminar(id_dispositivo)
+                                    if eliminacion_exitosa:
+                                        print("Eliminado con exito")
+                                    else:
+                                        print("No se encontro el dispositivo")
+                                except ValueError as err:
+                                    print(f"Error al eliminar: {err}")
+                                except Exception as err:
+                                    print(f"Error inesperado al eliminar: {err}")
+                                                       
                             
                             case __:
                                 print("Error : Ingreso una opcion incorrecta")
