@@ -7,7 +7,7 @@ id_usuario int auto_increment primary key,
 nombre varchar(60) not null,
 apellido varchar(100) not null,
 email varchar(255) not null,
-usuario varchar(10) not null ,
+nombre_usuario varchar(10) not null ,
 contrasena varchar(255) not null,
 rol varchar(20) not null);
 
