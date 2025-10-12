@@ -47,3 +47,4 @@ id_automatizacion int ,
 id_dispositivo int,
 foreign key (id_automatizacion) references automatizaciones(id_automatizacion),
 foreign key (id_dispositivo) references dispositivo(id_dispositivo));
+

@@ -174,10 +174,14 @@ if __name__ == "__main__":
                                 
                                 us.consultar_datos(usuario_guardado,db)
                                 
-                
-                    
-            
-                
-                
+                                
+                            case 2:
+                                    print("\nListando dispositivos disponibles:")
+                                    dispositivos = svc.listar()
+                               
+                            case __:
+                                print("Error: Ingrese una opción válida")
+                                    
+                            
                 
 
