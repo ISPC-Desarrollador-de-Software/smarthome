@@ -8,7 +8,7 @@ apellido varchar(100) not null,
 email varchar(255) not null,
 usuario varchar(10) not null ,
 contrasena varchar(255) not null,
-rol int not null);
+rol varchar(20) not null);
 
 create table domicilio(
 id_domicilio int auto_increment primary key,
