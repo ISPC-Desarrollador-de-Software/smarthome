@@ -1,4 +1,8 @@
 
+Archivo DB_Smarthome(onecompiler.com).sql para la profe Ivana,  solo insert para cargar las tablas.
+
+==========================================================
+Para el profesor Martin Archivo (DB_SmartHome.sql)
 
 SmartHome – README de Ejecución en DBMS Online
 Este proyecto utiliza MySQL 8.0+.
