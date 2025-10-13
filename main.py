@@ -70,7 +70,7 @@ if __name__ == "__main__":
                         print(":::::::::::::::::::::::::::::")
                         print("\nopcion 1: Cambiar de rol de un usuario")
                         print("opcion 2: Crear Dispostivo")
-                        print("Opcion 3: Actualizar Dispositivo")
+                        print("Opcion 3: Actualizar estado del Dispositivo")
                         print("Opcion 4: Listar Dispositivos")
                         print("Opcion 5: Eliminar Dispositivo")
                         print("Opcion 6: volver al menu anterior")
@@ -112,7 +112,32 @@ if __name__ == "__main__":
 
                             
                             case 3 : 
-                                pass
+                                    id_dispositivo = None
+                                    while id_dispositivo is None:
+                                        try:
+                                            id_input = input("Ingrese el ID del dispositivo que desea actualizar su estado: ").strip() 
+                                            id_dispositivo = int(id_input)
+                                            
+                                            if id_dispositivo <= 0:
+                                                print("El ID debe ser un numero positivo")
+                                                id_dispositivo = None
+                                        except ValueError:
+                                            print("El ID debe ser un numero entero")
+                                    
+                                    print("Ingrese el estado. Estado posible: encendido o apagado")
+                                    nuevo_estado = input("Ingrese el nuevo estado: ").strip().lower()
+                                    
+                                    if not nuevo_estado:
+                                        print("El estado no puede estar vacio")
+                                        continue
+                                    
+                                    actualizacion_exitosa = svc.cambiar_estado_del_dispostivo(id_dispositivo, nuevo_estado)
+                                    
+                                    if actualizacion_exitosa:
+                                        print("El estado pudo ser cambiado con exito")
+                                    else:
+                                        print("El dispositivo no pudo ser actualizado con exito")
+
                             
                             case 4 :
                                 try:
@@ -143,6 +168,11 @@ if __name__ == "__main__":
                                     print(f"Error al eliminar: {err}")
                                 except Exception as err:
                                     print(f"Error inesperado al eliminar: {err}")
+                                    
+                                    
+                            case 6:
+                                print("Saliendo...")
+                                break
                                                        
                             
                             case __:
@@ -159,6 +189,7 @@ if __name__ == "__main__":
                         
                         print("Opcion 1 : Consultar datos personales.")
                         print("Opcion 2 : Consultar Dispostivos.")
+                        print("Opcion 3 : Salir.")
 
                         opcion= input("Ingrese una opcion: ")
                         
@@ -178,6 +209,11 @@ if __name__ == "__main__":
                             case 2:
                                     print("\nListando dispositivos disponibles:")
                                     dispositivos = svc.listar()
+                            
+                            
+                            case 3:
+                                print("Saliendo...")
+                                break
                                
                             case __:
                                 print("Error: Ingrese una opción válida")
