@@ -15,17 +15,14 @@ class Usuario_Sv():
     except mysql.connector.Error as e:
       print(f"Error MySQL: {e}")
     
-  def iniciar_sesion(self,usuario : str , contrasenia : str ,rol ,db):
-        
+  def iniciar_sesion(self, usuario: str, contrasenia: str, db):
     pdao = Usuario_dao(db)
-        
-    try: 
-      
-      return pdao.consulta_iniciar_sesion(usuario, contrasenia, rol)
-   
+    try:
+        rol = pdao.consulta_iniciar_sesion(usuario, contrasenia)
+        return rol
     except mysql.connector.Error as err:
-    
-      return err
+        print("Error al iniciar sesión:", err)
+        return None
     
   def cambiar_rol(self,rol,nombre_usuario,db):
     

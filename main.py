@@ -36,22 +36,38 @@ if __name__ == "__main__":
         
         match opcion_entero:
             case 1:
-                
-                print("\n::::::::::::::::")
-                print("::::Registro::::")
-                print("::::::::::::::::") 
+                while True: 
+                    print("\n::::::::::::::::")
+                    print("::::Registro::::")
+                    print("::::::::::::::::") 
 
-                us =Usuario_Sv()
-                #dni = input("Ingrese su DNI: ")
-                nombre = input("Ingrese su nombre: ")
-                apellido = input("Ingrese su apellido: ")
-                email = input("Ingrese su email: ")
-                nombre_usuario = input("Ingrese el usuario: ")
-                contrasena = input("Ingrese la contrasenia: ")
-                print("rol: admnistrador o estandar")
-                rol = input("Ingrese el rol: ").lower().strip()
-                us.registro(nombre,apellido,email,nombre_usuario,contrasena,rol,db)
+                    us =Usuario_Sv()
+                    #dni = input("Ingrese su DNI: ")
+                    nombre = input("Ingrese su nombre: ")
+                    apellido = input("Ingrese su apellido: ")
+                    email = input("Ingrese su email: ")
+                    nombre_usuario = input("Ingrese el usuario: ")
+                    contrasena = input("Ingrese la contrasenia: ")
+                    
+                    print("Opciones para ROL")
+                    print("Digite 1 para admnistrador ")
+                    print("Digite 2 para usuario estandar")
+                    rol = input("Ingrese el rol: ")
+                    
+                    if not rol.isdigit():
+                        print("Ingrese un valor numerico valido ")
+                        continue
+                        
+                    else : 
+                        rol_opcion = int(rol)
+
                 
+                
+                    us.registro(nombre,apellido,email,nombre_usuario,contrasena,rol_opcion,db)
+                    pregunta = input("¿Quiere registrar otro usuario? SI o NO: ").lower().strip
+                    
+                    if pregunta != "no":
+                        break
            
 
             case 2: 
@@ -61,9 +77,10 @@ if __name__ == "__main__":
                 us =Usuario_Sv()
                 usuario = input("Ingrese su usuario: ")
                 contrasenia = input ("Ingrese su contrasenia: ")
-                usuario_guardado = usuario
-                rol = input("Ingrese su rol: ")
-                if us.iniciar_sesion(usuario,contrasenia,rol,db) == True and rol =="administrador":
+                
+                rol= us.iniciar_sesion(usuario, contrasenia, db)
+                
+                if rol == 1:
                     while True :
                         print("\n:::::::::::::::::::::::::::::")
                         print(":::Bienvenido Administrador::")
@@ -143,13 +160,14 @@ if __name__ == "__main__":
                                 except Exception as err:
                                     print(f"Error inesperado al eliminar: {err}")
                                                        
-                            
+                            case 6 :
+                                break
                             case __:
                                 print("Error : Ingreso una opcion incorrecta")
                             
                             
                 
-                elif  us.iniciar_sesion(usuario,contrasenia,rol,db) == True and rol =="estandar" : 
+                elif  rol ==2  : 
                     
                     while True: 
                         print("\n:::::::::::::::::::")

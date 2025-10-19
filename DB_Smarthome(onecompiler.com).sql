@@ -5,9 +5,9 @@ CREATE TABLE usuario (
   nombre varchar(60) NOT NULL,
   apellido varchar(100) NOT NULL,
   email varchar(255) NOT NULL,
-  usuario varchar(10) NOT NULL,
+  nombre_usuario varchar(10) NOT NULL,
   contrasena varchar(50) NOT NULL,
-  rol varchar(20) NOT NULL 
+  rol int NOT NULL 
 );
 
 

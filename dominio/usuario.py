@@ -1,6 +1,6 @@
 class Usuario:
     
-    def __init__(self ,nombre : str ,apellido :str , email :str ,nombre_usuario :str ,contrasena :str ,rol :str ):
+    def __init__(self ,nombre : str ,apellido :str , email :str ,nombre_usuario :str ,contrasena :str ,rol :int ):
         
         self.__nombre = nombre
         self.__apellido = apellido
@@ -61,4 +61,4 @@ class Usuario:
         self.__rol = valor
         
     def __str__(self):
-        return f"  nombre: {self.__nombre}, apellido: {self.__apellido},email: {self.email}, usuario {self.__nombre_usuario},contrasena{self.__contrasena}, rol: {self.__rol}" 
+        return f"  nombre: {self.__nombre}, apellido: {self.__apellido},email: {self.email}, usuario {self.__nombre_usuario},contrasena: {self.__contrasena}, rol: {self.__rol}" 

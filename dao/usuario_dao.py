@@ -2,7 +2,7 @@
 import mysql.connector
 from dominio.usuario import Usuario
 from mysql.connector import errorcode
-from dao.Interfaz.inter import DataAccessDAO
+from dao.interfaz.interfaz_dao_usuario import DataAccessDAO
 from dao.db_conn import DBConn
 
 
@@ -29,6 +29,9 @@ class  Usuario_dao(DataAccessDAO):
                 return Usuario(*row)
             except mysql.connector.Error as err:
                 raise err
+            finally:
+                cursor.close()
+                conn.close()
              
     def create(self,usuario :Usuario):
         with self.db_conn as conn:
@@ -40,6 +43,9 @@ class  Usuario_dao(DataAccessDAO):
                 conn.commit()
             except mysql.connector.Error as err:
                 raise err
+            finally:
+                cursor.close()
+                conn.close()
             
     def update_rol(self,rol :str , nombre_usuario :str ):
         with self.db_conn as conn :
@@ -51,31 +57,34 @@ class  Usuario_dao(DataAccessDAO):
                 conn.commit()
             except mysql.connector.Error as err:
                 raise err 
+            finally:
+                cursor.close()
+                conn.close()
     
     def delete(self,usuario : Usuario):
         with self.db_conn as conn : 
             try:
                 cursor = conn.cursor()
-                query = f"delete form {self.db_name}.usuario where id = %s "
-                cursor.execute(query, usuario.dni)
+                query = f"delete from {self.db_name}.usuario where nombre_usuario = %s "
+                cursor.execute(query, (usuario.nombre_usuario,))
                 conn.commit()
             except mysql.connector.Error as err:
                 raise err
+            finally:
+                cursor.close()
+                conn.close()
             
-    def consulta_iniciar_sesion(self,nombre_usuario:str , contrasena : str , rol :str )->bool :
-        
-        with self.db_conn as conn :
+    def consulta_iniciar_sesion(self, nombre_usuario: str, contrasena: str) -> int | None:
+        with self.db_conn as conn:
             try:
                 cursor = conn.cursor()
-                query = f"select nombre_usuario,contrasena,rol from {self.db_name}.usuario where nombre_usuario = %s and contrasena = %s and rol = %s"
-                cursor.execute(query,(nombre_usuario,contrasena,rol))
-                
-                encontrado = cursor.fetchone() is not None
-                cursor.close()
-                return encontrado
-            
-               
+                query = f" select rol from {self.db_name}.usuario where nombre_usuario = %s and contrasena = %s "
+                cursor.execute(query, (nombre_usuario, contrasena))
+                row = cursor.fetchone()
+                return row[0] if row else None  # Devuelve 1 o 2, o None si no existe
             except mysql.connector.Error as err:
                 raise err
-            
+            finally:
+                cursor.close()
+                conn.close()
     

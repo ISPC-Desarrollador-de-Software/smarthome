@@ -16,5 +16,9 @@ class DataAccessDAO(ABC):
     def delete(self,object):
         pass
     
+    @abstractmethod
+    def consulta_iniciar_sesion(self,objet):
+        pass
+    
     
     
