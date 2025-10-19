@@ -57,3 +57,13 @@ class ServicioDispositivos:
     def listar(self):
         
         return self.dao.listar_dispositivos()
+    
+    def cambiar_estado_del_dispostivo(self, id_dispositivo: int, nuevo_estado: str) -> bool:
+        
+            if nuevo_estado not in ["encendido", "apagado"]:
+                print ("Error el estado debe ser encendido o apagado.")
+                return False
+            
+            return self.dao.cambiar_estado_del_dispostivo(id_dispositivo, nuevo_estado)
+        
+        

@@ -6,7 +6,7 @@ from dao.interfaz.interface_dao_dispositivo import DataAccessDAO
 
 from dominio.dispositivo import Dispositivo
  
-
+5
 class DispositivoDAO(DataAccessDAO):
     def __init__(self, db: DBConn):
         self.db = db
@@ -77,8 +77,26 @@ class DispositivoDAO(DataAccessDAO):
         
         
     
-    def cambiar_estado_del_dispostivo(self):
-        pass
+    def cambiar_estado_del_dispostivo(self, id_dispositivo: int, nuevo_estado: str) -> bool:
+        with self.db.connect_to_mysql() as conn:
+            try:
+                cursor = conn.cursor()
+                sentencia_sql = "UPDATE dispositivo SET estado = %s WHERE id_dispositivo = %s"
+                cursor.execute(sentencia_sql, (nuevo_estado, id_dispositivo))
+                conn.commit()
+            
+                filas_afectadas = cursor.rowcount
+            
+                if filas_afectadas > 0:
+                    self.logger.info(F"Estado del dispositivo {id_dispositivo} actualizado a '{nuevo_estado}")
+                    return True
+                else:
+                    self.logger.warning(f"No se encontro el dispositivo {id_dispositivo}")
+            except mysql.connector.Error as err:
+                self.logger.error(f"Error al actualizar estado del dispositivo: {err}")
+                conn.rollback()
+                raise
+        
     
     def cambiar_ubicacion(self):
         pass
