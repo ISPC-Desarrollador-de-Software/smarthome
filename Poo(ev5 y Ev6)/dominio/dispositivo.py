@@ -1,6 +1,8 @@
-class Dispositivos_entidad:
+class Dispositivo:
     
-    def __init__(self,nombre, tipo,ubicacion,estado):
+    def __init__(self,id_dispositivo,nombre, tipo,estado,ubicacion,id_ubicacion):
+        self.__id = id_dispositivo
+        self.__id_ubicacion = id_ubicacion
         self.__nombre = nombre 
         self.__tipo= tipo
         self.__ubicacion = ubicacion 
@@ -39,12 +41,19 @@ class Dispositivos_entidad:
     def ubicacion(self,valor):
         self.__ubicacion = valor
     
-def agregar_dispositivo():
-    pass
-
-def eliminar_dispositivo():
-    pass
-
-def mostrar_dispositivo():
-    pass 
-
+    @property
+    def id_ubicacion(self):
+        return self.__id_ubicacion
+    
+    @id_ubicacion.setter
+    def id_ubicacion(self,valor):
+        self.__id_ubicacion = valor
+        
+    @property
+    def id_dispositivo(self):
+        return self.__id
+    
+    @id_dispositivo.setter
+    def id_dispositivo(self,valor):
+        self.__id = valor
+        
