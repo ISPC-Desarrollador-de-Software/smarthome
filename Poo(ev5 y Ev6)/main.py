@@ -3,7 +3,7 @@ import mysql.connector
 from dao.db_conn import DBConn
 from dao.usuario_dao import Usuario_dao
 from dominio.usuario import Usuario
-from servicio.Usuario import Usuario_Sv
+from servicio.usuario import UsuarioSv
 from dominio.dispositivo import Dispositivo
 from servicio.dispositivos import ServicioDispositivos
 
@@ -41,7 +41,7 @@ if __name__ == "__main__":
                     print("::::Registro::::")
                     print("::::::::::::::::") 
 
-                    us =Usuario_Sv()
+                    us =UsuarioSv()
                     #dni = input("Ingrese su DNI: ")
                     nombre = input("Ingrese su nombre: ")
                     apellido = input("Ingrese su apellido: ")
@@ -64,17 +64,19 @@ if __name__ == "__main__":
                 
                 
                     us.registro(nombre,apellido,email,nombre_usuario,contrasena,rol_opcion,db)
-                    pregunta = input("¿Quiere registrar otro usuario? SI o NO: ").lower().strip
                     
-                    if pregunta != "no":
+                    pregunta = input("¿Quiere registrar otro usuario? SI o NO:").lower()
+                    
+                    if pregunta == "no":
                         break
+                    
            
 
             case 2: 
                 print("\n:::::::::::::::::::::::")
                 print("::::Iniciar Sesion ::::")
                 print(":::::::::::::::::::::::") 
-                us =Usuario_Sv()
+                us =UsuarioSv()
                 usuario = input("Ingrese su usuario: ")
                 contrasenia = input ("Ingrese su contrasenia: ")
                 usuario_guardado = usuario

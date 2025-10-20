@@ -2,7 +2,7 @@ import mysql.connector
 from dominio.usuario import Usuario
 from dao.usuario_dao import Usuario_dao
 
-class Usuario_Sv():
+class UsuarioSv():
     
   def registro(self,nombre : str ,apellido:str ,email:str, nombre_usuario:str , contrasena : str ,rol :str, db):
     pdao = Usuario_dao(db)
