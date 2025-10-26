@@ -1,9 +1,10 @@
 
 import mysql.connector
+
 from dominio.usuario import Usuario
 from mysql.connector import errorcode
 from dao.interfaz.interfaz_dao_usuario import DataAccessDAO
-from dao.db_conn import DBConn
+from dao.db_conn import DBConn ,logger
 
 
 class  Usuario_dao(DataAccessDAO):
@@ -41,6 +42,7 @@ class  Usuario_dao(DataAccessDAO):
                 parametros = (usuario.nombre,usuario.apellido,usuario.email,usuario.nombre_usuario,usuario.contrasena,usuario.rol)
                 cursor.execute(query,parametros)
                 conn.commit()
+                logger.info("Usuario registrado satisfactoriamente")
             except mysql.connector.Error as err:
                 raise err
             finally:
@@ -55,6 +57,7 @@ class  Usuario_dao(DataAccessDAO):
                 
                 cursor.execute(query,(rol,nombre_usuario))
                 conn.commit()
+                
             except mysql.connector.Error as err:
                 raise err 
             finally:
