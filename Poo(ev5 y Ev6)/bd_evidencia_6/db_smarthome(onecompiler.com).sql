@@ -8,7 +8,7 @@ apellido varchar(100) not null,
 email varchar(255) not null,
 nombre_usuario varchar(10) not null ,
 contrasena varchar(255) not null,
-rol varchar(20)not null);
+rol int not null);
 
 create table domicilio(
 id_domicilio int auto_increment primary key,
@@ -49,16 +49,16 @@ foreign key (id_dispositivo) references dispositivo(id_dispositivo));
 
 -- USUARIO (10)
 INSERT INTO usuario (nombre, apellido, email, nombre_usuario, contrasena, rol) VALUES
-('Ana','García','ana@gmail.com','ana','123456','administrador'),
-('Luis','Flores','luis@gmail.com','luis','123456','estandar'),
-('María','Pérez','maria@gmail.com','maria','123456','estandar'),
-('Carlos','López','carlos@gmail.com','carlos','123456','estandar'),
-('Sofía','Martínez','sofia@gmail.com','sofia','123456','administrador'),
-('Julián','Ramos','julian@gmail.com','julian','123456','estandar'),
-('Agustina','Vega','agustina@gmail.com','agus','123456','estandar'),
-('Mateo','Suárez','mateo@gmail.com','mateo','123456','estandar'),
-('Carla','Quiroga','carla@gmail.com','carla','123456','estandar'),
-('Flor','Romero','flor@gmail.com','flor','123456','administrador');
+('Ana','García','ana@gmail.com','ana','123456','1'),
+('Luis','Flores','luis@gmail.com','luis','123456','1'),
+('María','Pérez','maria@gmail.com','maria','123456','1'),
+('Carlos','López','carlos@gmail.com','carlos','123456','1'),
+('Sofía','Martínez','sofia@gmail.com','sofia','123456','2'),
+('Julián','Ramos','julian@gmail.com','julian','123456','2'),
+('Agustina','Vega','agustina@gmail.com','agus','123456','2'),
+('Mateo','Suárez','mateo@gmail.com','mateo','123456','2'),
+('Carla','Quiroga','carla@gmail.com','carla','123456','2'),
+('Flor','Romero','flor@gmail.com','flor','123456','2');
 
 
 

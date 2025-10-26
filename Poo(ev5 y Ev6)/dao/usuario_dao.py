@@ -3,7 +3,7 @@ import mysql.connector
 
 from dominio.usuario import Usuario
 from mysql.connector import errorcode
-from dao.interfaz.interfaz_dao_usuario import DataAccessDAO
+from dao.interfaz.interface_dao_usuario import DataAccessDAO
 from dao.db_conn import DBConn ,logger
 
 
@@ -57,6 +57,7 @@ class  Usuario_dao(DataAccessDAO):
                 
                 cursor.execute(query,(rol,nombre_usuario))
                 conn.commit()
+                logger.info("Se actualizo correctamente el rol")
                 
             except mysql.connector.Error as err:
                 raise err 
@@ -71,6 +72,7 @@ class  Usuario_dao(DataAccessDAO):
                 query = f"delete from {self.db_name}.usuario where nombre_usuario = %s "
                 cursor.execute(query, (usuario.nombre_usuario,))
                 conn.commit()
+                logger.info("Se Elimino correctamente el usuario")
             except mysql.connector.Error as err:
                 raise err
             finally:
