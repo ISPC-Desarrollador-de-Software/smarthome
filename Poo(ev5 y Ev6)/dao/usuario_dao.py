@@ -9,7 +9,6 @@ from dao.db_conn import DBConn ,logger
 
 class  Usuario_dao(DataAccessDAO):
     
-   
     def __init__(self,db_conn: DBConn):
             
             self.db_conn = db_conn.connect_to_mysql()
@@ -30,9 +29,7 @@ class  Usuario_dao(DataAccessDAO):
                 return Usuario(*row)
             except mysql.connector.Error as err:
                 raise err
-            finally:
-                cursor.close()
-                conn.close()
+            
              
     def create(self,usuario :Usuario):
         with self.db_conn as conn:
@@ -45,9 +42,7 @@ class  Usuario_dao(DataAccessDAO):
                 logger.info("Usuario registrado satisfactoriamente")
             except mysql.connector.Error as err:
                 raise err
-            finally:
-                cursor.close()
-                conn.close()
+            
             
     def update_rol(self,rol :str , nombre_usuario :str ):
         with self.db_conn as conn :
@@ -61,9 +56,7 @@ class  Usuario_dao(DataAccessDAO):
                 
             except mysql.connector.Error as err:
                 raise err 
-            finally:
-                cursor.close()
-                conn.close()
+           
     
     def delete(self,usuario : Usuario):
         with self.db_conn as conn : 
@@ -75,9 +68,7 @@ class  Usuario_dao(DataAccessDAO):
                 logger.info("Se Elimino correctamente el usuario")
             except mysql.connector.Error as err:
                 raise err
-            finally:
-                cursor.close()
-                conn.close()
+           
             
     def consulta_iniciar_sesion(self, nombre_usuario: str, contrasena: str) -> int | None:
         with self.db_conn as conn:
@@ -89,7 +80,5 @@ class  Usuario_dao(DataAccessDAO):
                 return row[0] if row else None  # Devuelve 1 o 2, o None si no existe
             except mysql.connector.Error as err:
                 raise err
-            finally:
-                cursor.close()
-                conn.close()
+         
     
